@@ -14,20 +14,19 @@ function addToCart() {
         cart[goodsId] = 1;
     }
     console.log(cart);
+    ajaxGetGoodsInfo();
 }
 
 function ajaxGetGoodsInfo() {
     fetch('/get-goods-info', {
             method: 'POST',
             body: JSON.stringify({ key: Object.keys(cart) }),
-            header: {
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         })
         .then(function(response) {
-
-        }).then(function(body) {
 
         }).then(function(body) {
             console.log(body);

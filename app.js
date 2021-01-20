@@ -11,6 +11,8 @@ const express = require('express'),
     myConnection = require('express-myconnection');
 const app = express();
 
+app.use(express.json());
+
 app.use(myConnection(mysql, {
     host: 'localhost',
     user: 'root',
@@ -272,6 +274,10 @@ app.get('/signup', function(req, res, next) {
 
 app.post('/signup', function(req, res, next) {
     res.render('/');
+});
+
+app.post('/get-goods-info', function(req, res) {
+    console.log(req.body);
 });
 
 /////-------------------BEGIN-------------------//
