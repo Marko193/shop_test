@@ -1,0 +1,14 @@
+div(class='wrap')
+	div(class='content')
+		header(class='side-header')
+			include side_header
+	
+		div(class='container')
+			div(class='row')
+				div(class='col col-m2-12')
+				each val, index in goods
+					include card.pug
+		include nav
+	
+	
+

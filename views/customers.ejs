@@ -1,0 +1,82 @@
+<% include partials/_header %>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Name</td>
+                            <td>Surname</td>
+                            <td>Phone</td>
+                            <td>Login</td>
+                            <td>Password</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data) { %>
+                            <% for(var i = 0; i < data.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= (i + 1) %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].first_name %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].last_name %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].mob_no %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].user_name %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].password%>
+                                    </td>
+                                    <td>
+                                        <a href="/home/users/update/<%= data[i].id %>" class="btn btn-info">Edit</a>
+                                        <a href="/home/users/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-5" style="
+            margin-left: 1px;">
+                <div class="card-body">
+
+                    <form action="/home/users/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="first_name" placeholder="Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="last_name" placeholder="Surname" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="mob_no" placeholder="Mobile number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="user_name" placeholder="Login" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="password" placeholder="Password" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+            Add user
+          </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <% include partials/_footer %>

@@ -1,0 +1,82 @@
+<% include partials/_header %>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Name</td>
+                            <td>Description</td>
+                            <td>Price</td>
+                            <td>Image</td>
+                            <td>Category_ID</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data) { %>
+                            <% for(var i = 0; i < data.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= (i + 1) %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].name %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].description %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].cost %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].image %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].category%>
+                                    </td>
+                                    <td>
+                                        <a href="/home/products/update/<%= data[i].id %>" class="btn btn-info">Edit</a>
+                                        <a href="/home/products/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-5" style="
+            margin-left: 1px;">
+                <div class="card-body">
+
+                    <form action="/home/products/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="description" placeholder="Description" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="cost" placeholder="Price" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="image" placeholder="Image" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="category" placeholder="Category" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+            Add product
+          </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <% include partials/_footer %>
